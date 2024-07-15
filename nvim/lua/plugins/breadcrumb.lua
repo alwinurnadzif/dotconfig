@@ -1,0 +1,21 @@
+-- return {
+--   "LunarVim/breadcrumbs.nvim",
+--   dependencies = {
+--     { "SmiteshP/nvim-navic" },
+--   },
+--   config = function()
+--     require("breadcrumbs").setup()
+--
+--     require("nvim-navic").setup({
+--       lsp = {
+--         auto_attach = true,
+--         lsp = {
+--           auto_attach = true,
+--           preference = { "volar" }
+--         }
+--       }
+--     })
+--   end
+-- }
+
+return {}

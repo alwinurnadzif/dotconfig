@@ -1,0 +1,108 @@
+return {
+  {
+    "williamboman/mason.nvim",
+    config = function()
+      require("mason").setup()
+    end
+
+  },
+  {
+    "williamboman/mason-lspconfig.nvim",
+    config = function()
+      require("mason-lspconfig").setup({
+        ensure_installed = { "lua_ls", "tsserver", "vuels" }
+      })
+    end
+  },
+  {
+    "neovim/nvim-lspconfig",
+    config = function()
+      local lspconfig = require("lspconfig")
+      local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+      lspconfig.lua_ls.setup({
+        capabilities = capabilities
+      })
+
+      lspconfig.gopls.setup({
+        capabilities = capabilities,
+        settings = {
+          gopls = {
+            analyses = {
+              unusedparams = true,
+            },
+            staticcheck = true,
+          },
+        },
+      })
+
+      lspconfig.tsserver.setup({
+        init_options = {
+          plugins = {
+            {
+              name = "@vue/typescript-plugin",
+              location = "/home/tokio/workspace/app/node-v21.5.0/lib/node_modules/@vue/typescript-plugin",
+              languages = { "javascript", "typescript", "vue" },
+            },
+          },
+        },
+        filetypes = {
+          "javascript",
+          "typescript",
+          "vue",
+        },
+      })
+      local util = require 'lspconfig.util'
+      local function get_typescript_server_path(root_dir)
+        local global_ts = '/home/tokio/workspace/app/node-v21.5.0/lib/node_modules/typescript/lib'
+        -- Alternative location if installed as root:
+        -- local global_ts = '/usr/local/lib/node_modules/typescript/lib'
+        local found_ts = ''
+        local function check_dir(path)
+          found_ts = util.path.join(path, 'node_modules', 'typescript', 'lib')
+          if util.path.exists(found_ts) then
+            return path
+          end
+        end
+        if util.search_ancestors(root_dir, check_dir) then
+          return found_ts
+        else
+          return global_ts
+        end
+      end
+
+      require 'lspconfig'.volar.setup {
+        capabilities = capabilities,
+        on_new_config = function(new_config, new_root_dir)
+          new_config.init_options.typescript.tsdk = get_typescript_server_path(new_root_dir)
+        end,
+      }
+
+      lspconfig.emmet_ls.setup({
+        filetypes = { "astro", "css", "eruby", "html", "htmldjango", "javascriptreact", "less", "pug", "sass", "scss", "svelte", "typescriptreact" },
+        capabilities = capabilities
+      })
+
+      lspconfig.cssls.setup({
+        capabilities = capabilities
+      })
+
+      lspconfig.intelephense.setup({
+        filetypes = { "php" },
+        capabilities = capabilities
+      })
+
+      lspconfig.dartls.setup({
+        capabilities = capabilities
+      })
+
+
+      vim.keymap.set("n", "K", vim.lsp.buf.hover)
+      vim.keymap.set("n", "gd", vim.lsp.buf.definition)
+      vim.keymap.set("n", "gD", vim.lsp.buf.declaration)
+      vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
+      vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
+      vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename)
+    end
+  }
+}
