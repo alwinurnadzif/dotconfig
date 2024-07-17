@@ -21,13 +21,13 @@ DotConfig provides configurations for:
 1. Clone the repository:
 
 ```bash
-    git clone https://github.com/alwinurnadzif/dotconfig.git
+git clone https://github.com/alwinurnadzif/dotconfig.git
 ```
 
 2. Navigate to the directory 
 
 ```bash
-    cd dotconfig
+cd dotconfig
 ```
 
 3. Create symbolic links for configuration lines 
