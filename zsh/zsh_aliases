@@ -11,6 +11,7 @@ alias gss="git status -s"
 alias gp="git push"
 alias glog="git log --oneline --decorate --graph"
 alias gd="git diff"
+alias gdclip="git diff | xclip -sel clipboard"
 
 
 # xampp 

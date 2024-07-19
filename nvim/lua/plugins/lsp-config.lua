@@ -41,7 +41,7 @@ return {
           plugins = {
             {
               name = "@vue/typescript-plugin",
-              location = "/home/tokio/workspace/app/node-v21.5.0/lib/node_modules/@vue/typescript-plugin",
+              location = "/home/tokio/workspace/apps/node/lib/node_modules/@vue/typescript-plugin",
               languages = { "javascript", "typescript", "vue" },
             },
           },
@@ -54,7 +54,7 @@ return {
       })
       local util = require 'lspconfig.util'
       local function get_typescript_server_path(root_dir)
-        local global_ts = '/home/tokio/workspace/app/node-v21.5.0/lib/node_modules/typescript/lib'
+        local global_ts = '/home/tokio/workspace/apps/node/lib/node_modules/typescript/lib'
         -- Alternative location if installed as root:
         -- local global_ts = '/usr/local/lib/node_modules/typescript/lib'
         local found_ts = ''
