@@ -1,8 +1,10 @@
 export PATH="$HOME/.local/bin:$PATH"
-# GO
-export PATH="$HOME/workspace/apps/go/bin:$PATH"
 
-# NODE
-export PATH="$HOME/workspace/apps/node/bin:$PATH"
-
+export WORKSPACE_APPS="$HOME/workspace/apps"
+# golang
+export PATH="$WORKSPACE_APPS/go/bin:$PATH"
+# node js
+export PATH="$WORKSPACE_APPS/node/bin:$PATH"
+# dart sdk 
+export PATH="$WORKSPACE_APPS/dart-sdk/bin:$PATH"
 
