@@ -8,6 +8,9 @@ alias gcmsg="git commit -m"
 alias gb="git branch"
 alias gco="git checkout"
 alias gss="git status -s"
+alias gp="git push"
+alias glog="git log --oneline --decorate --graph"
+alias gd="git diff"
 
 
 # xampp 
