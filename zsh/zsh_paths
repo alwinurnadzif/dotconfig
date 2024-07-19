@@ -1,0 +1,8 @@
+export PATH="$HOME/.local/bin:$PATH"
+# GO
+export PATH="$HOME/workspace/apps/go/bin:$PATH"
+
+# NODE
+export PATH="$HOME/workspace/apps/node/bin:$PATH"
+
+

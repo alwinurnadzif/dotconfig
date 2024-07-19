@@ -1,0 +1,14 @@
+# Text Editor
+alias v="nvim"
+
+# Git 
+alias ga="git add"
+alias gc="git commit"
+alias gcmsg="git commit -m"
+alias gb="git branch"
+alias gco="git checkout"
+
+# xampp 
+alias xampp="sudo /opt/lampp/lampp start"
+
+
