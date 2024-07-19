@@ -19,3 +19,21 @@ vim.o.writebackup = false
 vim.o.swapfile = false
 
 vim.o.scrolloff = 10
+
+-- Highlight on yank
+vim.api.nvim_create_augroup('YankHighlight', { clear = true })
+
+-- Function to highlight yanked text
+local function highlight_yank()
+  vim.api.nvim_set_hl(0, 'YankHighlight', { bg = '#cba6f7', fg = '#000000', bold = true }) -- Customize highlight group here
+  vim.cmd('highlight YankHighlight guifg=#000000 guibg=#cba6f7 gui=bold')                  -- Customize highlight group here
+end
+
+-- Autocmd to highlight yanked text
+vim.api.nvim_create_autocmd('TextYankPost', {
+  group = 'YankHighlight',
+  callback = function()
+    highlight_yank()
+    vim.highlight.on_yank({ higroup = 'YankHighlight', timeout = 100 }) -- Highlight duration in milliseconds
+  end,
+})
