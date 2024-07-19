@@ -17,4 +17,8 @@ alias gdclip="git diff | xclip -sel clipboard"
 # xampp 
 alias xampp="sudo /opt/lampp/lampp start"
 
+# terminal 
+alias c="clear"
+alias ssr="shutdown -r now"
+alias sss="shutdown now"
 
