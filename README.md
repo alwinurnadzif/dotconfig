@@ -14,7 +14,7 @@ DotConfig provides configurations for:
 
 - **Neovim**: A highly extensible text editor.
 - **Kitty**: The fast, feature-rich, GPU based terminal emulator
-
+- **zsh**: Shell designed for interactive use
 
 ## Installation
 
@@ -35,5 +35,25 @@ cd dotconfig
 
 ln -s ~/dotconfig/nvim ~/.config/nvim
 ln -s ~/dotconfig/kitty ~/.config/kitty
+```
+
+4. Load zsh config to .zshrc 
+
+```bash 
+# Aliases
+if [ -f ~/dotconfig/zsh/zsh_aliases ]; then 
+  source ~/dotconfig/zsh/zsh_aliases
+fi
+
+# Paths
+if [ -f ~/dotconfig/zsh/zsh_paths ]; then 
+  source ~/dotconfig/zsh/zsh_paths
+fi
+
+# Functions 
+if [ -f ~/dotconfig/zsh/zsh_functions ]; then 
+  source ~/dotconfig/zsh/zsh_functions
+fi
+
 ```
 
