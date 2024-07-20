@@ -103,6 +103,7 @@ return {
       vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
       vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
       vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename)
+      vim.keymap.set('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', { noremap = true, silent = true })
     end
   }
 }
