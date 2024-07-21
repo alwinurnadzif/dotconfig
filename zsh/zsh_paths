@@ -7,4 +7,6 @@ export PATH="$WORKSPACE_APPS/go/bin:$PATH"
 export PATH="$WORKSPACE_APPS/node/bin:$PATH"
 # dart sdk 
 export PATH="$WORKSPACE_APPS/dart-sdk/bin:$PATH"
+# Xampp  
+export PATH="/opt/lampp/bin:$PATH"
 

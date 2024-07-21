@@ -8,6 +8,7 @@ return {
     conform.setup({
       formatters_by_ft = {
         javascript = { "prettier" },
+        html = { "prettier" },
         vue = { "prettier" },
         php = { "easy-coding-standard" }
       },
