@@ -10,7 +10,8 @@ return {
         javascript = { "prettier" },
         html = { "prettier" },
         vue = { "prettier" },
-        php = { "easy-coding-standard" }
+        php = { "easy-coding-standard" },
+        markdown = { "prettier" }
       },
       format_on_save = {
         lsp_fallback = true,
