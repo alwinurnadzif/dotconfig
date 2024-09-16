@@ -25,12 +25,26 @@ return {
 
       lspconfig.gopls.setup({
         capabilities = capabilities,
+        on_attach = function()
+          vim.api.nvim_create_autocmd("BufWritePre", {
+            buffer = bufnr,
+            callback = function()
+              -- Automatically format and organize imports
+              vim.lsp.buf.format({ async = false })
+              vim.lsp.buf.code_action({
+                context = { only = { "source.organizeImports" } },
+                apply = true
+              })
+            end,
+          })
+        end,
         settings = {
           gopls = {
             analyses = {
               unusedparams = true,
             },
             staticcheck = true,
+            gofumpt = true
           },
         },
       })
