@@ -10,7 +10,7 @@ return {
     "williamboman/mason-lspconfig.nvim",
     config = function()
       require("mason-lspconfig").setup({
-        ensure_installed = { "lua_ls", "tsserver", "vuels", "gopls" }
+        ensure_installed = { "lua_ls", "ts_ls", "vuels", "gopls", "typos_lsp" }
       })
     end
   },
@@ -35,7 +35,7 @@ return {
         },
       })
 
-      lspconfig.tsserver.setup({
+      lspconfig.ts_ls.setup({
         init_options = {
           plugins = {
             {
