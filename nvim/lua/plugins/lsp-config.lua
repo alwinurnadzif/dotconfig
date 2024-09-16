@@ -10,7 +10,7 @@ return {
     "williamboman/mason-lspconfig.nvim",
     config = function()
       require("mason-lspconfig").setup({
-        ensure_installed = { "lua_ls", "ts_ls", "vuels", "gopls", "typos_lsp" }
+        ensure_installed = { "lua_ls", "ts_ls", "vuels", "gopls", "volar", "typos_lsp" }
       })
     end
   },
@@ -103,6 +103,7 @@ return {
 
 
       vim.keymap.set("n", "K", vim.lsp.buf.hover)
+      vim.keymap.set("n", "bk", vim.lsp.buf.signature_help)
       vim.keymap.set("n", "gd", vim.lsp.buf.definition)
       vim.keymap.set("n", "gD", vim.lsp.buf.declaration)
       vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
