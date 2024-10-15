@@ -15,7 +15,7 @@ return {
 
     telescope.setup({
       defaults = {
-        preview = false,
+        preview = true,
         mappings = {
           i = {
             ["<C-j>"] = actions.move_selection_next,
@@ -41,5 +41,6 @@ return {
     local builtin = require("telescope.builtin")
     vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
     vim.keymap.set("n", "<leader>fs", require("telescope").extensions.live_grep_args.live_grep_args, { noremap = true })
+    vim.keymap.set("n", "<leader>fb", ":Telescope current_buffer_fuzzy_find<CR>")
   end
 }
