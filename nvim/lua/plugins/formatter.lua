@@ -11,8 +11,8 @@ return {
         html = { "prettier" },
         vue = { "prettier" },
         php = { "easy-coding-standard" },
-        markdown = { "prettier" },
-        json = { "prettier" }
+        -- markdown = { "prettier" },
+        --        json = { "prettier" }
       },
       format_on_save = {
         lsp_fallback = true,
