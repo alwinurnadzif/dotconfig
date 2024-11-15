@@ -10,7 +10,15 @@ return {
     "williamboman/mason-lspconfig.nvim",
     config = function()
       require("mason-lspconfig").setup({
-        ensure_installed = { "lua_ls", "ts_ls", "vuels", "gopls", "volar", "typos_lsp" }
+        ensure_installed = { "lua_ls", "ts_ls", "vuels", "gopls", "volar", "typos_lsp", "emmet_ls", "intelephense" }
+      })
+    end
+  },
+  {
+    "WhoIsSethDaniel/mason-tool-installer.nvim",
+    config = function()
+      require("mason-tool-installer").setup({
+        ensure_installed = { "prettier" }
       })
     end
   },
