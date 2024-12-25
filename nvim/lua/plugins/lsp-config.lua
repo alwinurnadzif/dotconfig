@@ -56,20 +56,39 @@ return {
           },
         },
       })
+      local node_modules = "/home/tokio/workspace/apps/node/lib/node_modules/"
 
-      require 'lspconfig'.ts_ls.setup {
+      lspconfig.ts_ls.setup({
         init_options = {
-          plugins = {},
+          plugins = {
+            {
+              name = "@vue/typescript-plugin",
+              location = node_modules .. "@vue/typescript-plugin",
+              languages = { "javascript", "typescript", "vue" },
+            },
+          },
         },
         filetypes = {
           "javascript",
           "typescript",
+          "vue"
         },
-      }
+      })
 
-      require 'lspconfig'.vuels.setup {
+      lspconfig.volar.setup({
+        filetypes = {
+          "javascript",
+          "typescript",
+          "vue"
+        },
+        init_options = {
+          typescript = {
+            tsdk = node_modules .. "typescript/lib/"
+          }
+        },
         capabilities = capabilities
-      }
+
+      })
 
       lspconfig.emmet_ls.setup({
         filetypes = { "astro", "css", "eruby", "html", "htmldjango", "javascriptreact", "less", "pug", "sass", "scss", "svelte", "typescriptreact" },
