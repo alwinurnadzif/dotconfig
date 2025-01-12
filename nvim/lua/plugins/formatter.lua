@@ -13,7 +13,8 @@ return {
         php = { "easy-coding-standard" },
         -- markdown = { "prettier" },
         --        json = { "prettier" }
-        go = { 'gofmt' }
+        go = { 'gofmt' },
+        xml = { 'xmlformatter' }
       },
       format_on_save = {
         lsp_fallback = true,
