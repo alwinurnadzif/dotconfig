@@ -153,10 +153,10 @@
      Many programs reserve space automatically, but you can use this in other
      cases. -->
   <margins>
-    <top>0</top>
-    <bottom>0</bottom>
-    <left>2</left>
-    <right>0</right>
+    <top>24</top>
+    <bottom>24</bottom>
+    <left>24</left>
+    <right>24</right>
   </margins>
   <dock>
     <position>TopLeft</position>
@@ -251,7 +251,7 @@
       <action name="ToggleShowDesktop"></action>
     </keybind>
     <!-- Keybindings for windows -->
-    <keybind key="A-F4">
+    <keybind key="C-q">
       <action name="Close"></action>
     </keybind>
     <keybind key="A-Escape">
@@ -368,6 +368,11 @@
           <icon>konsole</icon>
         </startupnotify>
         <command>kitty</command>
+      </action>
+    </keybind>
+    <keybind key="C-g">
+      <action name="Execute">
+        <command>xfce4-screenshooter -f </command>
       </action>
     </keybind>
   </keyboard>

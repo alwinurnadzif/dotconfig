@@ -1,0 +1,5 @@
+# background
+feh --bg-scale /home/tokio/workspace/storage/pictures/wallpapers/wall.jpg &
+
+# set monitor refresh rate
+xrandr --output HDMI-1 --mode 1920x1080 --rate 100
