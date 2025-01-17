@@ -177,7 +177,6 @@
     <!-- 'Left', 'Middle', 'Right' -->
   </dock>
   <keyboard>
-    <chainQuitKey>C-g</chainQuitKey>
     <!-- Keybindings for desktop switching -->
     <keybind key="C-A-Left">
       <action name="GoToDesktop">
@@ -370,9 +369,9 @@
         <command>kitty</command>
       </action>
     </keybind>
-    <keybind key="C-g">
+    <keybind key="A-p">
       <action name="Execute">
-        <command>xfce4-screenshooter -f </command>
+        <command>xfce4-screenshooter -f</command>
       </action>
     </keybind>
   </keyboard>

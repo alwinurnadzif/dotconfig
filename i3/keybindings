@@ -1,0 +1,7 @@
+bindsym $mod+a workspace 1
+bindsym $mod+s workspace 2
+bindsym $mod+d workspace 3
+bindsym $mod+f workspace 4
+
+bindsym $mod+Space exec dmenu_run -l 10
+bindsym Ctrl+$mod+Space exec kitty
