@@ -56,6 +56,7 @@ return {
           },
         },
       })
+
       local node_modules = "/home/tokio/workspace/apps/node/lib/node_modules/"
 
       lspconfig.ts_ls.setup({
@@ -84,7 +85,9 @@ return {
         init_options = {
           typescript = {
             tsdk = node_modules .. "typescript/lib/"
-          }
+          },
+
+          scriptSetup = true -- Menyediakan dukungan penuh untuk <script setup>
         },
         capabilities = capabilities
 
@@ -114,7 +117,7 @@ return {
         }
       })
 
-      lspconfig.lemmix.setup({
+      lspconfig.lemminx.setup({
         capabilities = capabilities
       })
 
