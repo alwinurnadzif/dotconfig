@@ -1,0 +1,15 @@
+bar {
+    status_command i3status
+    position bottom  # Bisa diganti top
+    font pango:Cousine Nerd Font 10
+    colors {
+        background #282a36
+        statusline #f8f8f2
+        separator #44475a
+
+        # Warna untuk workspace yang aktif
+        focused_workspace  #1E1E1E #61AFEF #282A36
+        inactive_workspace #282A36 #44475A #282A36
+        urgent_workspace #FF5555 #1E1E1E #FF5555
+    }
+}

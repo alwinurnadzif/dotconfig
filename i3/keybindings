@@ -1,7 +1,21 @@
+# workspace 
 bindsym $mod+a workspace 1
 bindsym $mod+s workspace 2
 bindsym $mod+d workspace 3
 bindsym $mod+f workspace 4
 
-bindsym $mod+Space exec dmenu_run -l 10
-bindsym Ctrl+$mod+Space exec kitty
+# app
+bindsym $mod+Return exec kitty
+bindsym $mod+r exec --no-startup-id dmenu_run
+
+# window 
+bindsym $mod+Shift+q kill
+
+# i3 
+bindsym $mod+Shift+R reload
+
+# focus
+bindsym $mod+h focus left
+bindsym $mod+l focus right
+bindsym $mod+k focus up
+bindsym $mod+j focus down
