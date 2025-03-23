@@ -1,0 +1,15 @@
+general {
+    colors = true
+    interval = 1
+}
+
+order += "memory"
+order += "time"
+
+memory {
+    format = "RAM: %used / %total (%percentage_used)"
+}
+
+time {
+    format = "%Y-%m-%d %H:%M:%S"
+}

@@ -1,7 +1,7 @@
 bar {
     status_command i3status
     position bottom  # Bisa diganti top
-    font pango:Cousine Nerd Font 10
+    font pango:Cousine Nerd Font 12
     colors {
         background #282a36
         statusline #f8f8f2
@@ -13,3 +13,5 @@ bar {
         urgent_workspace #FF5555 #1E1E1E #FF5555
     }
 }
+
+

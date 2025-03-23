@@ -3,6 +3,7 @@ bindsym $mod+a workspace 1
 bindsym $mod+s workspace 2
 bindsym $mod+d workspace 3
 bindsym $mod+f workspace 4
+bindsym $mod+g workspace 5
 
 # app
 bindsym $mod+Return exec kitty
@@ -11,6 +12,7 @@ bindsym $mod+p exec xfce4-screenshooter -f -o "xclip -selection clipboard -t ima
 
 # window 
 bindsym $mod+Shift+q kill
+bindsym $mod+Shift+space floating toggle
 
 # i3 
 bindsym $mod+Shift+R reload
@@ -20,3 +22,4 @@ bindsym $mod+h focus left
 bindsym $mod+l focus right
 bindsym $mod+k focus up
 bindsym $mod+j focus down
+
