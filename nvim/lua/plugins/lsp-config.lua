@@ -10,7 +10,7 @@ return {
     "williamboman/mason-lspconfig.nvim",
     config = function()
       require("mason-lspconfig").setup({
-        ensure_installed = { "lua_ls", "ts_ls", "vuels", "gopls", "volar", "typos_lsp", "emmet_ls", "intelephense" }
+        ensure_installed = { "lua_ls", "ts_ls", "vuels", "gopls", "volar", "typos_lsp", "emmet_ls", "intelephense", "cssls" }
       })
     end
   },
@@ -72,7 +72,8 @@ return {
         filetypes = {
           "javascript",
           "typescript",
-          "vue"
+          "vue",
+          "javascriptreact"
         },
       })
 

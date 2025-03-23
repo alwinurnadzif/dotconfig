@@ -14,7 +14,8 @@ return {
         -- markdown = { "prettier" },
         --        json = { "prettier" }
         go = { 'gofmt' },
-        xml = { 'xmlformatter' }
+        xml = { 'xmlformatter' },
+        javascriptreact = { "prettier" }
       },
       format_on_save = {
         lsp_fallback = true,
