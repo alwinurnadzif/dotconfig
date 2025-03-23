@@ -25,8 +25,8 @@ vim.api.nvim_create_augroup('YankHighlight', { clear = true })
 
 -- Function to highlight yanked text
 local function highlight_yank()
-  vim.api.nvim_set_hl(0, 'YankHighlight', { bg = '#cba6f7', fg = '#000000', bold = true }) -- Customize highlight group here
-  vim.cmd('highlight YankHighlight guifg=#000000 guibg=#cba6f7 gui=bold')                  -- Customize highlight group here
+  vim.api.nvim_set_hl(0, 'YankHighlight', { bg = '#61AFEF', fg = '#000000', bold = true }) -- Customize highlight group here
+  vim.cmd('highlight YankHighlight guifg=#000000 guibg=#61AFEF gui=bold')                  -- Customize highlight group here
 end
 
 -- Autocmd to highlight yanked text
