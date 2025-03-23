@@ -11,5 +11,5 @@ memory {
 }
 
 time {
-    format = "%Y-%m-%d %H:%M:%S"
+    format = "%A %Y-%m-%d %I:%M %p"
 }
