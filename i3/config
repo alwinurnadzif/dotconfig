@@ -22,3 +22,4 @@ include ./keybindings
 include ./border
 include ./bar
 
+exec --no-startup-id xinput set-button-map "SIGMACHIP Usb Mouse" 3 2 1
