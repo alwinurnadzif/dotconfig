@@ -16,7 +16,9 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 floating_modifier $mod
 
 tiling_drag modifier titlebar
-for_window [floating] resize set 100 ppt 100 ppt
+for_window [floating] resize set 40 ppt 40 ppt, move position center
+for_window [class="pavucontrol"] floating enable, move position center
+for_window [class="Pcmanfm"] floating enable, move position center
 
 include ./keybindings
 include ./border
