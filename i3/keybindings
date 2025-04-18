@@ -24,3 +24,5 @@ bindsym $mod+l focus right
 bindsym $mod+k focus up
 bindsym $mod+j focus down
 
+bindsym $mod+Shift+v split v 
+bindsym $mod+Shift+h split h 
