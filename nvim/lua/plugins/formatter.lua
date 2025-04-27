@@ -11,7 +11,7 @@ return {
         html = { "prettier" },
         vue = { "prettier" },
         php = { "easy-coding-standard" },
-        -- markdown = { "prettier" },
+        markdown = { "prettier" },
         --        json = { "prettier" }
         go = { 'gofmt' },
         xml = { 'xmlformatter' },
