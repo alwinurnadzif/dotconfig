@@ -26,3 +26,7 @@ bindsym $mod+j focus down
 
 bindsym $mod+Shift+v split v 
 bindsym $mod+Shift+h split h 
+
+# scratchpad
+bindsym $mod+minus scratchpad show
+bindsym $mod+Shift+minus move scratchpad
