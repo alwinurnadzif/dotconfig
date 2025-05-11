@@ -30,3 +30,6 @@ bindsym $mod+Shift+h split h
 # scratchpad
 bindsym $mod+minus scratchpad show
 bindsym $mod+Shift+minus move scratchpad
+
+# Audio 
+bindsym $mod+Shift+b exec --no-startup-id switch-audio.sh
