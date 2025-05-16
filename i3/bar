@@ -1,5 +1,6 @@
 bar {
     status_command i3status
+    tray_output none
     position bottom  # Bisa diganti top
     font pango:Cousine Nerd Font 12
     colors {

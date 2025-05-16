@@ -1,6 +1,9 @@
 general {
     colors = true
     interval = 1
+    color_good = "#f8f8f2"
+    color_degraded = "#f8f8f2"
+    color_bad = "#f8f8f2"
 }
 
 order += "memory"
@@ -12,4 +15,9 @@ memory {
 
 time {
     format = "%A %Y-%m-%d %I:%M %p"
+}
+
+read_file custom_text {
+  path = "/tmp/custom_text.txt"
+  format = "%content"
 }
