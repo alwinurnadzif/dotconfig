@@ -4,8 +4,9 @@ bar {
     position bottom  # Bisa diganti top
     font pango:Cousine Nerd Font 12
     colors {
-        background #282a36
+        # background #282a36
         statusline #f8f8f2
+        background #000000
         separator #44475a
 
         # Warna untuk workspace yang aktif
