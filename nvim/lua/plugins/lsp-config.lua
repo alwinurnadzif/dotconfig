@@ -113,8 +113,10 @@ return {
       })
 
       lspconfig.typos_lsp.setup({
+        cmd_env = { RUST_LOG = "error" },
+        capabilities = capabilities,
         init_options = {
-          diagnosticSeverity = "Info"
+          diagnosticSeverity = "Warn"
         }
       })
 
