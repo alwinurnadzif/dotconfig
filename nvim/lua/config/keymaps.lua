@@ -16,3 +16,10 @@ vim.keymap.set("n", "<leader>t", "`")
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", { noremap = true, silent = true })
 
 vim.keymap.set("n", "t", "`", { noremap = true, silent = true })
+
+
+vim.keymap.set("v", "y", '"+y')
+vim.keymap.set("n", "y", '"+y')
+
+vim.keymap.set("v", "p", '"+p')
+vim.keymap.set("n", "p", '"+p')

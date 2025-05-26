@@ -1,7 +1,7 @@
 vim.o.termguicolors = true
 vim.o.number = true
 vim.o.signcolumn = 'yes:1'
-vim.o.clipboard = "unnamedplus"
+-- vim.o.clipboard = "unnamedplus"
 vim.o.wrap = false
 vim.o.cursorline = true
 
@@ -37,3 +37,16 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     vim.highlight.on_yank({ higroup = 'YankHighlight', timeout = 100 }) -- Highlight duration in milliseconds
   end,
 })
+
+vim.g.clipboard = {
+  name = 'win32yank',
+  copy = {
+    ['+'] = 'win32yank -i --crlf',
+    ['*'] = 'win32yank -i --crlf',
+  },
+  paste = {
+    ['+'] = 'win32yank -o --lf',
+    ['*'] = 'win32yank -o --lf',
+  },
+  cache_enabled = 0,
+}
