@@ -39,14 +39,14 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 vim.g.clipboard = {
-  name = 'win32yank',
+  name = 'clip',
   copy = {
-    ['+'] = 'win32yank -i --crlf',
-    ['*'] = 'win32yank -i --crlf',
+    ['+'] = 'clip.exe',
+    ['*'] = 'clip.exe',
   },
   paste = {
-    ['+'] = 'win32yank -o --lf',
-    ['*'] = 'win32yank -o --lf',
+    ['+'] = 'powershell.exe -c "Get-Clipboard"',
+    ['*'] = 'powershell.exe -c "Get-Clipboard"',
   },
   cache_enabled = 0,
 }
