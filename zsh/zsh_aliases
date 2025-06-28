@@ -23,3 +23,5 @@ alias c="clear"
 alias ssr="shutdown -r now"
 alias sss="shutdown now"
 
+# Tmux 
+alias t="tmux"
