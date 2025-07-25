@@ -1,34 +1,50 @@
 return {
+
   {
     "williamboman/mason.nvim",
     config = function()
       require("mason").setup()
     end
+  },
 
-  },
-  {
-    "williamboman/mason-lspconfig.nvim",
-    config = function()
-      require("mason-lspconfig").setup({
-        ensure_installed = { "lua_ls", "ts_ls", "vuels", "gopls", "typos_lsp", "emmet_ls", "intelephense", "cssls" }
-      })
-    end
-  },
-  {
-    "WhoIsSethDaniel/mason-tool-installer.nvim",
-    config = function()
-      require("mason-tool-installer").setup({
-        ensure_installed = { "prettier" }
-      })
-    end
-  },
   {
     "neovim/nvim-lspconfig",
     config = function()
       local lspconfig = require("lspconfig")
       local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+      -- lua
       lspconfig.lua_ls.setup({
         capabilities = capabilities
+      })
+
+      -- golang
+      lspconfig.gopls.setup({
+        capabilities = capabilities,
+        filetypes = { "go", "gomod", "gowork", "gotmpl" },
+        cmd = { "gopls" },
+        on_attach = function()
+          vim.api.nvim_create_autocmd("BufWritePre", {
+            buffer = bufnr,
+            callback = function()
+              -- Automatically format and organize imports
+              vim.lsp.buf.format({ async = false })
+              vim.lsp.buf.code_action({
+                context = { only = { "source.organizeImports" } },
+                apply = true
+              })
+            end,
+          })
+        end,
+        settings = {
+          gopls = {
+            analyses = {
+              unusedparams = true,
+            },
+            staticcheck = true,
+            gofumpt = true
+          },
+        },
       })
 
       lspconfig.gopls.setup({
@@ -59,6 +75,7 @@ return {
 
       local node_modules = "/home/tokio/workspace/apps/node/lib/node_modules/"
 
+      -- typescript
       lspconfig.ts_ls.setup({
         init_options = {
           plugins = {
@@ -77,6 +94,7 @@ return {
         },
       })
 
+      -- vue
       lspconfig.volar.setup({
         filetypes = {
           "javascript",
@@ -87,31 +105,34 @@ return {
           typescript = {
             tsdk = node_modules .. "typescript/lib/"
           },
-
           scriptSetup = true -- Menyediakan dukungan penuh untuk <script setup>
         },
         capabilities = capabilities
-
       })
 
+      -- emmet
       lspconfig.emmet_ls.setup({
         filetypes = { "astro", "css", "eruby", "html", "htmldjango", "javascriptreact", "less", "pug", "sass", "scss", "svelte", "typescriptreact", "vue" },
         capabilities = capabilities
       })
 
+      -- css
       lspconfig.cssls.setup({
         capabilities = capabilities
       })
 
+      -- php
       lspconfig.intelephense.setup({
         filetypes = { "php" },
         capabilities = capabilities
       })
 
+      -- dart
       lspconfig.dartls.setup({
         capabilities = capabilities
       })
 
+      -- typo
       lspconfig.typos_lsp.setup({
         cmd_env = { RUST_LOG = "error" },
         capabilities = capabilities,
@@ -120,10 +141,10 @@ return {
         }
       })
 
+      -- lemminx
       lspconfig.lemminx.setup({
         capabilities = capabilities
       })
-
 
       vim.keymap.set("n", "K", vim.lsp.buf.hover)
       vim.keymap.set("n", "gk", vim.lsp.buf.signature_help)
@@ -135,4 +156,5 @@ return {
       vim.keymap.set('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', { noremap = true, silent = true })
     end
   }
+
 }
