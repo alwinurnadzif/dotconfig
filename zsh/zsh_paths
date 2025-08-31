@@ -13,3 +13,5 @@ export PATH="$WORKSPACE_APPS/dart-sdk/bin:$PATH"
 # Xampp  
 export PATH="/opt/lampp/bin:$PATH"
 
+export PATH="/opt/nvim/bin:$PATH"
+

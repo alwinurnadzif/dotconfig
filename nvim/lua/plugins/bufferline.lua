@@ -1,5 +1,6 @@
 return {
   'akinsho/bufferline.nvim',
+  cond = not vim.g.vscode,
   version = "*",
   dependencies = 'nvim-tree/nvim-web-devicons',
   config = function()

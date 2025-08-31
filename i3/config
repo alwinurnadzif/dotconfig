@@ -27,3 +27,8 @@ include ./bar
 # exec --no-startup-id xinput set-button-map "SIGMACHIP Usb Mouse" 3 2 1
 exec --no-startup-id dunst
 exec xrandr --output HDMI-A-0 --above eDP
+
+for_window [class="qterminal"] floating enable
+for_window [class="Thunar"] floating enable
+for_window [class="Pavucontrol"] floating enable
+for_window [class="Blueman-manager"] floating enable

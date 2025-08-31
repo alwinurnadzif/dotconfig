@@ -2,6 +2,7 @@ return {
 
   {
     "williamboman/mason.nvim",
+    cond = not vim.g.vscode,
     config = function()
       require("mason").setup()
     end
@@ -9,6 +10,8 @@ return {
 
   {
     "neovim/nvim-lspconfig",
+
+    cond = not vim.g.vscode,
     config = function()
       local lspconfig = require("lspconfig")
       local capabilities = require('cmp_nvim_lsp').default_capabilities()

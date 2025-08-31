@@ -8,6 +8,8 @@ general {
 
 order += "time"
 order += "read_file sunshine"
+order += "memory"
+order += "battery 0"
 
 memory {
     format = "RAM: %used / %total (%percentage_used)"
@@ -20,4 +22,10 @@ time {
 read_file sunshine {
   path = "/home/tokio/dotconfig/i3status/text.txt"
   format = "%content"
+}
+
+battery 0 {
+        format = "%status %percentage"
+        path = "/sys/class/power_supply/BAT0/uevent"
+        last_full_capacity = true
 }
