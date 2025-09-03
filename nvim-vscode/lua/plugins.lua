@@ -1,6 +1,7 @@
-return require('packer').startup(function(use)
+return require("packer").startup(function()
     use 'wbthomason/packer.nvim'
 
+    -- Leap (pengganti sneak)
     use {
         "ggandor/leap.nvim",
         config = function()

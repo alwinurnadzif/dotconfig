@@ -6,10 +6,11 @@ bindsym $mod+f workspace 4
 bindsym $mod+g workspace 5
 
 # app
-bindsym $mod+Return exec qterminal
+# bindsym $mod+Return exec kitty
+bindsym $mod+Return exec /home/tokio/.local/kitty.app/bin/kitty
 #bindsym $mod+r exec --no-startup-id dmenu_run
 bindsym $mod+r exec rofi -show run 
-bindsym $mod+p exec xfce4-screenshooter -f -o "xclip -selection clipboard -t image/png"
+bindsym $mod+p exec xfce4-screenshooter -r -o "xclip -selection clipboard -t image/png"
 
 # window 
 bindsym $mod+Shift+q kill
@@ -28,8 +29,27 @@ bindsym $mod+Shift+v split v
 bindsym $mod+Shift+h split h 
 
 # scratchpad
-bindsym $mod+minus scratchpad show
+# bindsym $mod+minus scratchpad show
+bindsym $mod+minus exec ~/.local/bin/scratchpad-rofi.sh
 bindsym $mod+Shift+minus move scratchpad
 
 # Audio 
 bindsym $mod+Shift+b exec --no-startup-id switch-audio.sh
+
+bindsym XF86AudioRaiseVolume exec --no-startup-id sh -c "pactl set-sink-volume @DEFAULT_SINK@ +5% && notify-send 'Volume ↑'"
+bindsym XF86AudioLowerVolume exec --no-startup-id sh -c "pactl set-sink-volume @DEFAULT_SINK@ -5% && notify-send 'Volume ↓'"
+bindsym XF86AudioMute        exec --no-startup-id sh -c "pactl set-sink-mute @DEFAULT_SINK@ toggle && notify-send 'Mute Toggle'"
+
+mode "resize" {
+    bindsym h resize shrink width 10 px or 10 ppt
+    bindsym l resize grow width 10 px or 10 ppt
+    bindsym k resize shrink height 10 px or 10 ppt
+    bindsym j resize grow height 10 px or 10 ppt
+
+    # exit mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+# masuk resize mode
+bindsym $mod+Ctrl+r mode "resize"

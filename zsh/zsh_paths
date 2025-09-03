@@ -14,4 +14,5 @@ export PATH="$WORKSPACE_APPS/dart-sdk/bin:$PATH"
 export PATH="/opt/lampp/bin:$PATH"
 
 export PATH="/opt/nvim/bin:$PATH"
+export PATH="$HOME/.local/kitty.app/bin:$PATH"
 
