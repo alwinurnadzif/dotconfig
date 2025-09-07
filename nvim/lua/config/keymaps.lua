@@ -1,27 +1,28 @@
-vim.keymap.set("n", "<leader>e", ":Neotree toggle<CR>")
-vim.keymap.set("i", "jj", "<Esc>")
+local keymap = vim.keymap.set
+local opts = { noremap = true, silent = true }
 
-vim.keymap.set("n", "L", "$")
-vim.keymap.set("n", "H", "^")
-vim.keymap.set("v", "L", "$")
-vim.keymap.set("v", "H", "^")
+keymap("n", "<leader>e", ":Neotree toggle<CR>")
+keymap("i", "jj", "<Esc>")
 
-vim.keymap.set("n", "[b", ":bprev<CR>")
-vim.keymap.set("n", "]b", ":bnext<CR>")
+-- keymap("n", "L", "$", opts)
+-- keymap("n", "H", "^", opts)
+--
+-- keymap("v", "L", "$", opts)
+-- keymap("v", "H", "^", opts)
+
+keymap("n", "[b", ":bprev<CR>")
+keymap("n", "]b", ":bnext<CR>")
 
 vim.api.nvim_set_keymap("n", "<M-W>", "<C-W>", { noremap = true, silent = true })
 
-vim.keymap.set("n", "<leader>t", "`")
+keymap("n", "<leader>t", "`")
 
-vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", { noremap = true, silent = true })
+keymap("t", "<Esc>", "<C-\\><C-n>", { noremap = true, silent = true })
 
-vim.keymap.set("n", "t", "`", { noremap = true, silent = true })
+keymap("n", "t", "`", opts)
 
--- vim.keymap.set("v", "Y", '"+y')
--- vim.keymap.set("n", "Y", '"+y')
---
--- vim.keymap.set("v", "P", '"+p')
--- vim.keymap.set("n", "P", '"+p')
---
--- vim.keymap.set("v", "y", '"+y')
--- vim.keymap.set("n", "y", '"+y')
+keymap("i", "<c-l>", "<cmd> lua require'luasnip'.jump(1)<CR>", opts)
+keymap("s", "<c-l>", "<cmd>lua require'luasnip'.jump(1)<CR>", opts)
+
+keymap("i", "<C-h>", "<cmd>lua require'luasnip'.jump(-1)<CR>", opts)
+keymap("s", "<C-h>", "<cmd>lua require'luasnip'.jump(-1)<CR>", opts)

@@ -27,7 +27,7 @@ return {
 				disabled_devicons = true,
 				color_devicons = false,
 				preview = {
-					hide_on_startup = true, -- telescope 0.1.8+
+					hide_on_startup = false, -- telescope 0.1.8+
 				},
 				file_ignore_patterns = { "node_modules", "%.git", "dist" },
 			},
