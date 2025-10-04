@@ -1,5 +1,6 @@
 local ls = require("luasnip")
 local s, t, i = ls.snippet, ls.text_node, ls.insert_node
+local rep = require("luasnip.extras").rep
 
 return {
 	-- React Functional Component
@@ -51,22 +52,44 @@ return {
 		t({ "  </div>", "))}" }),
 	}),
 
+	-- if jsx
+	s("ifx", {
+		t("{("),
+		i(1),
+		t({ ") && (", "" }),
+		t({ "<>", "" }),
+		i(2),
+		t({ "</>", "" }),
+		t(")}"),
+	}),
+
 	-- Console Log
 	s("clg", {
-		t("console.log("),
+		t('console.log("'),
 		i(1),
+		t(': ", '),
+		rep(1),
 		t(");"),
 	}),
 
 	-- Try Catch
-	s("tc", {
+	s("tcf", {
 		t("try {"),
 		i(1),
-		t({ "", "} catch (error) {", "  " }),
+		t({ "", "} catch (err) {", "  " }),
+		t("console.error(err)"),
 		i(0),
 		t({ "", "} finally {", "}" }),
 	}),
 
+	s("tc", {
+		t("try {"),
+		i(1),
+		t({ "", "} catch (err) {", "  " }),
+		t("console.error(err)"),
+		i(0),
+		t({ "", "}" }),
+	}),
 	-- Next use client
 	s("uc", {
 		t('"use client"'),

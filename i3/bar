@@ -1,4 +1,7 @@
 bar {
+    mode hide
+    hidden_state hide
+    modifier Mod4 
     status_command i3status
     tray_output none
     position bottom  # Bisa diganti top

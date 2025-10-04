@@ -1,7 +1,7 @@
 set $mod Mod1
 
 #font pango:monospace 14
-font pango:Cousine Nerd Font 14
+font pango:Cousine Nerd Font 16
 
 exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
@@ -12,7 +12,7 @@ exec --no-startup-id blueman-applet
 exec --no-startup-id dunst
 exec --no-startup-id feh --bg-fill ~/Pictures/wallpaper/1.jpg
 exec --no-startup-id xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Natural Scrolling Enabled" 1
-exec --no-startup-id xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Accel Speed" 0.5
+exec --no-startup-id xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Accel Speed" 0.8
 exec --no-startup-id xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Tapping Enabled" 1
 # exec --no-startup-id picom --config ~/.config/picom/picom.conf -b
 
@@ -28,6 +28,8 @@ for_window [class="qterminal"] floating enable
 for_window [class="Thunar"] floating enable
 for_window [class="Pavucontrol"] floating enable
 for_window [class="Blueman-manager"] floating enable
+# contoh untuk scratchpad terminal
+for_window [con_mark="__i3_scratch"] move position center
 
 include ./keybindings
 include ./border
@@ -42,9 +44,15 @@ exec xrandr --output HDMI-A-0 --mode 1920x1080 --rate 99 --above eDP --auto
 workspace 1 output eDP
 workspace 2 output HDMI-A-0
 workspace 3 output HDMI-A-0
-workspace 4 output HDMI-A-0
+workspace 4 output eDP
+
+# workspace 2 output eDP
+# workspace 3 output eDP
 
 focus_follows_mouse no
 
+# exec --no-startup-id picom --backend glx --config ~/.config/picom/picom.conf
 
+# exec --no-startup-id sh -c "sleep 2 && picom --backend glx --config ~/.config/picom/picom.conf"
 
+# exec --no-startup-id xcompmgr -n

@@ -158,9 +158,6 @@ return {
 			})
 
 			-- dart
-			lspconfig.dartls.setup({
-				capabilities = capabilities,
-			})
 
 			-- typo
 			lspconfig.typos_lsp.setup({
@@ -174,6 +171,20 @@ return {
 			-- lemminx
 			lspconfig.lemminx.setup({
 				capabilities = capabilities,
+			})
+
+			-- dart
+
+			lspconfig.dartls.setup({
+
+				cmd = { "/usr/bin/dart", "language-server", "--protocol=lsp" },
+				filetypes = { "dart" },
+				root_dir = lspconfig.util.root_pattern("pubspec.yaml", ".git"),
+				init_options = {
+					closingLabels = true,
+					outline = true,
+					flutterOutline = true,
+				},
 			})
 
 			vim.keymap.set("n", "K", vim.lsp.buf.hover)

@@ -9,7 +9,7 @@ bindsym $mod+g workspace 5
 # bindsym $mod+Return exec kitty
 bindsym $mod+Return exec /home/tokio/.local/kitty.app/bin/kitty
 #bindsym $mod+r exec --no-startup-id dmenu_run
-bindsym $mod+r exec rofi -show run 
+bindsym $mod+r exec rofi -show run -no-lazy-grab -opacity 90
 bindsym $mod+p exec xfce4-screenshooter -r -o "xclip -selection clipboard -t image/png"
 
 # window 
