@@ -1,10 +1,10 @@
 bar {
-    mode hide
-    hidden_state hide
-    modifier Mod4 
+    # mode show
+    # hidden_state hide
+    # modifier Mod4 
     status_command i3status
     tray_output none
-    position bottom  # Bisa diganti top
+    position top  # Bisa diganti top
     font pango:Cousine Nerd Font 12
     colors {
         # background #282a36
