@@ -10,10 +10,12 @@ exec --no-startup-id redshift
 exec --no-startup-id pasystray
 exec --no-startup-id blueman-applet
 exec --no-startup-id dunst
-exec --no-startup-id feh --no-fehbg --bg-fill ~/Pictures/wallpaper/1.jpg --bg-fill ~/Pictures/wallpaper/1.jpg
+exec --no-startup-id feh --no-fehbg --bg-fill ~/Pictures/wallpaper/1.png --bg-fill ~/Pictures/wallpaper/1.png
 exec --no-startup-id xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Natural Scrolling Enabled" 1
 exec --no-startup-id xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Accel Speed" 0.8
 exec --no-startup-id xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Tapping Enabled" 1
+exec --no-startup-id xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Scroll Method Enabled" 0 0 1
+
 
 set $refresh_i3status killall -SIGUSR1 i3status
 
@@ -42,11 +44,12 @@ exec xrandr --output HDMI-A-0 --mode 1920x1080 --rate 99 --above eDP --auto
 
 workspace 1 output eDP
 workspace 2 output HDMI-A-0
-workspace 3 output HDMI-A-0
-workspace 4 output eDP
-
 # workspace 2 output eDP
 # workspace 3 output eDP
+workspace 3 output HDMI-A-0
+workspace 4 output eDP
+workspace 5 output HDMI-A-0
+# workspace 5 output eDP
 
 focus_follows_mouse no
 

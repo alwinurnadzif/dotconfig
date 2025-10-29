@@ -25,3 +25,13 @@ alias sss="shutdown now"
 
 # Tmux 
 alias t="tmux"
+
+
+alias ws2hdmi='i3-msg "workspace 2; move workspace to output HDMI-A-0"'
+alias ws3hdmi='i3-msg "workspace 3; move workspace to output HDMI-A-0"'
+
+alias ws2edp='i3-msg "workspace 2; move workspace to output eDP"'
+alias ws3edp='i3-msg "workspace 3; move workspace to output eDP"'
+
+alias movehdmi='i3-msg "workspace 2; move workspace to output HDMI-A-0"; i3-msg "workspace 3; move workspace to output HDMI-A-0"'
+alias moveedp='i3-msg "workspace 2; move workspace to output eDP"; i3-msg "workspace 3; move workspace to output eDP"'

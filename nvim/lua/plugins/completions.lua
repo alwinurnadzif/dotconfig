@@ -19,6 +19,7 @@ return {
 			luasnip.add_snippets("javascript", require("snippets.javascript"))
 			luasnip.add_snippets("javascriptreact", require("snippets.javascript"))
 			luasnip.add_snippets("all", require("snippets.all"))
+			luasnip.add_snippets("vue", require("snippets.vue"))
 
 			cmp.setup({
 				snippet = {
