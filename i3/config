@@ -46,9 +46,9 @@ workspace 1 output eDP
 workspace 2 output HDMI-A-0
 # workspace 2 output eDP
 # workspace 3 output eDP
-workspace 3 output HDMI-A-0
-workspace 4 output eDP
-workspace 5 output HDMI-A-0
+# workspace 3 output HDMI-A-0
+# workspace 4 output eDP
+# workspace 5 output HDMI-A-0
 # workspace 5 output eDP
 
 focus_follows_mouse no

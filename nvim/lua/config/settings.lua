@@ -1,4 +1,4 @@
-vim.o.termguicolors = true
+vim.o.termguicolors = false
 vim.o.number = true
 vim.o.relativenumber = true
 vim.o.signcolumn = "yes:1"
@@ -51,3 +51,9 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 --   },
 --   cache_enabled = 0,
 -- }
+--
+-- vim.cmd("highlight Visual cterm=reverse ctermbg=11")
+-- vim.cmd("highlight CursorLine ctermbg=234 cterm=bold")
+-- vim.cmd("highlight CursorLineNR ctermbg=191")
+--
+vim.cmd("colorscheme cls")
