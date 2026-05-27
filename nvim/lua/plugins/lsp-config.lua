@@ -10,41 +10,40 @@ return {
 
 	{
 		"neovim/nvim-lspconfig",
-
 		cond = not vim.g.vscode,
 		config = function()
-			local lspconfig = require("lspconfig")
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
+			-- Alternatif handler diagnostic yang kompatibel dengan Neovim 0.11+
+			local default_publish_handler = vim.lsp.handlers["textDocument/publishDiagnostics"]
 			vim.lsp.handlers["textDocument/publishDiagnostics"] = function(err, result, ctx, config)
 				if result and result.diagnostics then
-					for _, d in ipairs(result.diagnostics) do
-						local client = vim.lsp.get_client_by_id(ctx.client_id)
-						if client and client.name == "typos_lsp" then
+					local client = vim.lsp.get_client_by_id(ctx.client_id)
+					if client and client.name == "typos_lsp" then
+						for _, d in ipairs(result.diagnostics) do
 							-- Paksa semua diagnostic dari typos_lsp jadi warning
 							d.severity = vim.diagnostic.severity.WARN
 						end
 					end
 				end
-				return vim.lsp.diagnostic.on_publish_diagnostics(err, result, ctx, config)
+				return default_publish_handler(err, result, ctx, config)
 			end
 
-			-- lua
-			lspconfig.lua_ls.setup({
-				capabilities = capabilities,
-			})
+			-- 1. LUA
+			vim.lsp.config("lua_ls", { capabilities = capabilities })
+			vim.lsp.enable("lua_ls")
 
-			-- golang
-			lspconfig.gopls.setup({
+			-- 2. GOLANG
+			vim.lsp.config("gopls", {
 				capabilities = capabilities,
 				filetypes = { "go", "gomod", "gowork", "gotmpl" },
 				cmd = { "gopls" },
 				on_attach = function()
 					vim.api.nvim_create_autocmd("BufWritePre", {
-						buffer = bufnr,
-						callback = function()
+						pattern = { "*.go" },
+						callback = function(ev)
 							-- Automatically format and organize imports
-							vim.lsp.buf.format({ async = false })
+							vim.lsp.buf.format({ async = false, bufnr = ev.buf })
 							vim.lsp.buf.code_action({
 								context = { only = { "source.organizeImports" } },
 								apply = true,
@@ -54,139 +53,58 @@ return {
 				end,
 				settings = {
 					gopls = {
-						analyses = {
-							unusedparams = true,
-						},
+						analyses = { unusedparams = true },
 						staticcheck = true,
 						gofumpt = true,
 					},
 				},
 			})
+			vim.lsp.enable("gopls")
 
-			lspconfig.gopls.setup({
+			-- 3. PYTHON (Menambahkan Pyright)
+			vim.lsp.config("pyright", {
 				capabilities = capabilities,
-				on_attach = function()
-					vim.api.nvim_create_autocmd("BufWritePre", {
-						buffer = bufnr,
-						callback = function()
-							-- Automatically format and organize imports
-							vim.lsp.buf.format({ async = false })
-							vim.lsp.buf.code_action({
-								context = { only = { "source.organizeImports" } },
-								apply = true,
-							})
-						end,
-					})
-				end,
+				filetypes = { "python" },
 				settings = {
-					gopls = {
-						analyses = {
-							unusedparams = true,
-						},
-						staticcheck = true,
-						gofumpt = true,
-					},
-				},
-			})
-
-			local node_modules = "/home/tokio/workspace/apps/node/lib/node_modules/"
-
-			-- typescript
-			lspconfig.ts_ls.setup({
-				init_options = {
-					plugins = {
-						{
-							name = "@vue/typescript-plugin",
-							location = node_modules .. "@vue/typescript-plugin",
-							languages = { "javascript", "typescript", "vue" },
+					python = {
+						analysis = {
+							autoSearchPaths = true,
+							useLibraryCodeForTypes = true,
+							diagnosticMode = "openFilesOnly",
 						},
 					},
 				},
+			})
+			vim.lsp.enable("pyright")
+
+			-- 4. EMMET
+			vim.lsp.config("emmet_ls", {
+				capabilities = capabilities,
 				filetypes = {
-					"javascript",
-					"typescript",
-					"vue",
-					"javascriptreact",
+					"astro", "css", "eruby", "html", "htmldjango",
+					"javascriptreact", "less", "pug", "sass", "scss",
+					"svelte", "typescriptreact", "vue",
 				},
 			})
+			vim.lsp.enable("emmet_ls")
 
-			-- vue
-			lspconfig.volar.setup({
-				filetypes = {
-					"javascript",
-					"typescript",
-					"vue",
-				},
-				init_options = {
-					typescript = {
-						tsdk = node_modules .. "typescript/lib/",
-					},
-					scriptSetup = true, -- Menyediakan dukungan penuh untuk <script setup>
-				},
+			-- 5. CSS
+			vim.lsp.config("cssls", { capabilities = capabilities })
+			vim.lsp.enable("cssls")
+
+			-- 6. TYPOS
+			vim.lsp.config("typos_lsp", {
 				capabilities = capabilities,
-			})
-
-			-- emmet
-			lspconfig.emmet_ls.setup({
-				filetypes = {
-					"astro",
-					"css",
-					"eruby",
-					"html",
-					"htmldjango",
-					"javascriptreact",
-					"less",
-					"pug",
-					"sass",
-					"scss",
-					"svelte",
-					"typescriptreact",
-					"vue",
-				},
-				capabilities = capabilities,
-			})
-
-			-- css
-			lspconfig.cssls.setup({
-				capabilities = capabilities,
-			})
-
-			-- php
-			lspconfig.intelephense.setup({
-				filetypes = { "php" },
-				capabilities = capabilities,
-			})
-
-			-- dart
-
-			-- typo
-			lspconfig.typos_lsp.setup({
 				cmd_env = { RUST_LOG = "error" },
-				capabilities = capabilities,
-				init_options = {
-					diagnosticSeverity = 2,
-				},
+				init_options = { diagnosticSeverity = 2 },
 			})
+			vim.lsp.enable("typos_lsp")
 
-			-- lemminx
-			lspconfig.lemminx.setup({
-				capabilities = capabilities,
-			})
+			-- 7. LEMMINX (XML)
+			vim.lsp.config("lemminx", { capabilities = capabilities })
+			vim.lsp.enable("lemminx")
 
-			-- dart
-
-			lspconfig.dartls.setup({
-
-				cmd = { "/usr/bin/dart", "language-server", "--protocol=lsp" },
-				filetypes = { "dart" },
-				root_dir = lspconfig.util.root_pattern("pubspec.yaml", ".git"),
-				init_options = {
-					closingLabels = true,
-					outline = true,
-					flutterOutline = true,
-				},
-			})
-
+			-- Keymaps (Tetap aman digunakan)
 			vim.keymap.set("n", "K", vim.lsp.buf.hover)
 			vim.keymap.set("n", "gk", vim.lsp.buf.signature_help)
 			vim.keymap.set("n", "gd", vim.lsp.buf.definition)
@@ -194,12 +112,8 @@ return {
 			vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
 			vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
 			vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename)
-			vim.keymap.set(
-				"n",
-				"<leader>ca",
-				"<cmd>lua vim.lsp.buf.code_action()<CR>",
-				{ noremap = true, silent = true }
-			)
+			vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action)
 		end,
 	},
 }
+

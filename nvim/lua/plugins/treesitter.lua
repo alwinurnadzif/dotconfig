@@ -1,9 +1,10 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
+    tag = "v0.9.3",
     build = ":TSUpdate",
     config = function()
-      local configs = require("nvim-treesitter.configs")
+      local configs = require("nvim-treesitter")
 
       configs.setup({
         enable = true,
@@ -13,7 +14,7 @@ return {
         textobjects = {
           select = {
             enable = true,
-            lookahead = true,           -- Automatically jump forward to text object
+            lookahead = true,             -- Automatically jump forward to text object
             keymaps = {
               ["af"] = "@function.outer", -- Select the whole function
               ["if"] = "@function.inner", -- Select inside the function
